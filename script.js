@@ -22,13 +22,13 @@ viewEl.addEventListener('click', (event) => {
 })
 
 async function fetchImages() {
-  if(inputData.trim().length) {
+  const inputData = inputEl.value
+  const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
+
+  if (inputData.trim().length) {
     alert("Please enter a search term");
     return;
   }
-  const inputData = inputEl.value
-
-  const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
 
   const response = await fetch(url)
   const data = await response.json();
